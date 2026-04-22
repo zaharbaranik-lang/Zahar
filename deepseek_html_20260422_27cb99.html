@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Технологии в спорте | Портал</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', system-ui, sans-serif;
+            background: #f4f7fc;
+            color: #1a2a3a;
+            line-height: 1.5;
+        }
+
+        /* Header & Navigation */
+        .main-header {
+            background: linear-gradient(135deg, #0b2b38 0%, #123d4a 100%);
+            color: white;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #FFE6A7, #ffb347);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            transition: 0.2s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            background: #ffb347;
+            color: #0b2b38;
+        }
+
+        /* Sections */
+        .section {
+            max-width: 1300px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            scroll-margin-top: 80px;
+        }
+
+        .section-dark {
+            background: #eef2f7;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-left: 6px solid #ffb347;
+            padding-left: 1rem;
+            color: #0b2b38;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin: 1rem 0 0.5rem;
+            color: #1e6f5c;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #071a1f 0%, #0b2b38 100%);
+            color: white;
+            border-radius: 32px;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+        }
+
+        .hero .sub {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+
+        /* Carousel */
+        .carousel {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+            scroll-snap-type: x mandatory;
+        }
+
+        .carousel-card {
+            min-width: 250px;
+            background: #f8fafc;
+            border-radius: 24px;
+            padding: 1.5rem;
+            text-align: center;
+            scroll-snap-align: start;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .carousel-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .carousel-card .icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .btn {
+            background: #ffb347;
+            color: #1a2a3a;
+            padding: 0.7rem 1.5rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.2s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: #ff9f1a;
+            transform: scale(1.02);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #ffb347;
+            color: #ffb347;
+        }
+
+        /* Table */
+        .table-compare {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .table-compare th, .table-compare td {
+            border: 1px solid #cbd5e1;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .table-compare th {
+            background: #e9f0f5;
+        }
+
+        /* Video gallery */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .video-card {
+            background: #f1f5f9;
+            border-radius: 20px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .video-placeholder {
+            background: #0b2b38;
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            font-size: 0.9rem;
+        }
+
+        /* Quiz */
+        .quiz-question {
+            background: #fef9e3;
+            padding: 1rem;
+            border-radius: 20px;
+            margin-bottom: 1rem;
+        }
+
+        .quiz-option {
+            display: block;
+            margin: 0.5rem 0;
+        }
+
+        #quizResult {
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        /* Form */
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 16px;
+            border: 1px solid #cbd5e1;
+            font-family: inherit;
+        }
+
+        footer {
+            background: #0b2b38;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 700px) {
+            .section {
+                padding: 1rem;
+            }
+            h2 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="main-header">
+    <div class="nav-container">
+        <div class="logo">⚡ SportTech</div>
+        <ul class="nav-links">
+            <li><a href="#home">Главная</a></li>
+            <li><a href="#pro">Проф. спорт</a></li>
+            <li><a href="#gadgets">Гаджеты</a></li>
+            <li><a href="#apps">Приложения</a></li>
+            <li><a href="#future">Инновации</a></li>
+            <li><a href="#video">Видео</a></li>
+            <li><a href="#quiz">Тест</a></li>
+            <li><a href="#contact">Контакты</a></li>
+        </ul>
+    </div>
+</header>
+
+<main>
+    <!-- Главная страница -->
+    <div class="section" id="home">
+        <div class="hero">
+            <h1>📱 Как технологии меняют спорт</h1>
+            <div class="sub">От судейских ошибок до персональных тренировок — инновации уже здесь</div>
+            <div class="btn-group" style="justify-content: center; margin-top: 2rem;">
+                <a href="#pro" class="btn">Технологии в профессионалах</a>
+                <a href="#gadgets" class=" btn-outline btn">Гаджеты для любителей</a>
+            </div>
+        </div>
+
+        <h3>🔥 Ключевые технологии сегодня</h3>
+        <div class="carousel">
+            <div class="carousel-card"><div class="icon">⚽</div><strong>VAR в футболе</strong><br>Видеопомощь арбитрам</div>
+            <div class="carousel-card"><div class="icon">🎾</div><strong>Hawk‑Eye</strong><br>Точность до 3,6 мм</div>
+            <div class="carousel-card"><div class="icon">⌚</div><strong>Умные часы</strong><br>Пульс, GPS, восстановление</div>
+            <div class="carousel-card"><div class="icon">🧠</div><strong>ИИ‑тренер</strong><br>Персональные программы</div>
+            <div class="carousel-card"><div class="icon">👕</div><strong>Умная одежда</strong><br>Датчики движения</div>
+        </div>
+
+        <div class="btn-group">
+            <a href="#pro" class="btn">👉 Технологии в профессиональном спорте</a>
+            <a href="#gadgets" class="btn btn-outline">👉 Гаджеты для любителей</a>
+            <a href="#apps" class="btn btn-outline">👉 Спортивные приложения</a>
+        </div>
+    </div>
+
+    <!-- Технологии в профессиональном спорте -->
+    <div class="section" id="pro">
+        <h2>🏆 Технологии в профессиональном спорте</h2>
+        <p><strong>VAR (футбол):</strong> система видеоассистента арбитра. Проверяет голы, пенальти, красные карточки. Снижает грубые ошибки, но иногда вызывает споры из-за длительных пауз.</p>
+        <p><strong>Hawk‑Eye (теннис, футбол):</strong> 10–12 камер отслеживают мяч с точностью до 3,6 мм. Используется для определения аутов и линии ворот. Работает мгновенно.</p>
+        <p><strong>Датчики в экипировке (NFL, баскетбол):</strong> GPS‑маяки Catapult, смарт‑майки WHOOP измеряют нагрузку, риск травмы, уровень восстановления в реальном времени.</p>
+        <div class="video-placeholder">🎥 Видеофрагмент: работа VAR и Hawk‑Eye на ЧМ-2022 (представьте видео с демонстрацией)</div>
+    </div>
+
+    <!-- Гаджеты для любителей -->
+    <div class="section" id="gadgets">
+        <h2>⌚ Гаджеты для любителей</h2>
+        <table class="table-compare">
+            <thead><tr><th>Модель</th><th>Тип</th><th>Измерения</th><th>Цена</th></tr></thead>
+            <tbody>
+                <tr><td>Apple Watch Ultra 2</td><td>Умные часы</td><td>Пульс, GPS, ЭКГ, кислород</td><td>₽80 000</td></tr>
+                <tr><td>Garmin Forerunner 965</td><td>GPS‑часы</td><td>VO2max, восстановление, тренировочная нагрузка</td><td>₽65 000</td></tr>
+                <tr><td>Xiaomi Mi Band 8</td><td>Фитнес‑браслет</td><td>Пульс, шаги, сон, SpO2</td><td>₽3 500</td></tr>
+                <tr><td>Polar H10</td><td>Нагрудный пульсометр</td><td>ЧСС, HRV, кардионагрузка</td><td>₽8 000</td></tr>
+            </tbody>
+        </table>
+        <p><strong>Совет:</strong> для бега и велоспорта лучше подойдут Garmin или Polar, для повседневной активности — Xiaomi или Apple Watch.</p>
+    </div>
+
+    <!-- Спортивные приложения -->
+    <div class="section" id="apps">
+        <h2>📱 Спортивные приложения</h2>
+        <div class="video-grid">
+            <div class="video-card">
+                <div class="icon">🏃</div>
+                <h3>Strava</h3>
+                <p>GPS‑трекинг, социальная сеть для бегунов и велосипедистов. Сегменты, челленджи.</p>
+            </div>
+            <div class="video-card">
+                <div class="icon">💪</div>
+                <h3>Nike Training Club</h3>
+                <p>Бесплатные тренировки с видео, планы под любой уровень.</p>
+            </div>
+            <div class="video-card">
+                <div class="icon">🥗</div>
+                <h3>MyFitnessPal</h3>
+                <p>Подсчёт калорий, дневник питания, интеграция с фитнес‑браслетами.</p>
+            </div>
+        </div>
+        <p><strong>Инструкция:</strong> скачайте приложение → зарегистрируйтесь → укажите цели → синхронизируйте с гаджетом → начинайте тренировку по плану.</p>
+    </div>
+
+    <!-- Инновации будущего -->
+    <div class="section" id="future">
+        <h2>🚀 Инновации будущего</h2>
+        <ul>
+            <li><strong>VR‑тренажёры:</strong> полное погружение в игровую среду для тактических тренировок (например, для футбольных вратарей).</li>
+            <li><strong>«Умная» одежда с датчиками:</strong> рубашки, которые измеряют ЭКГ, дыхание и мышечную активность без браслетов.</li>
+            <li><strong>Искусственный интеллект:</strong> платформы на основе ИИ анализируют технику движений и дают персональные советы в реальном времени.</li>
+            <li><strong>Прогнозы экспертов:</strong> к 2030 году полностью автоматические судейские системы, персонализированные спортивные дроны-ассистенты, имплантируемые датчики восстановления.</li>
+        </ul>
+    </div>
+
+    <!-- Видео-галерея -->
+    <div class="section" id="video">
+        <h2>🎬 Видео-галерея</h2>
+        <div class="video-grid">
+            <div class="video-card"><div class="video-placeholder">▶️ Как работает Hawk‑Eye (1 мин)</div></div>
+            <div class="video-card"><div class="video-placeholder">📱 Обзор умных часов Garmin</div></div>
+            <div class="video-card"><div class="video-placeholder">🧠 ИИ‑тренер: будущее фитнеса</div></div>
+        </div>
+        <p><em>Совет:</em> при желании вы можете вставить реальные YouTube‑ролики через iframe.</p>
+    </div>
+
+    <!-- Интерактивный тест -->
+    <div class="section" id="quiz">
+        <h2>🧪 Тест: какой гаджет тебе подходит?</h2>
+        <div id="quizContainer">
+            <div class="quiz-question">
+                <p><strong>1. Какой вид спорта твой главный?</strong></p>
+                <label class="quiz-option"><input type="radio" name="q1" value="run"> Бег / велоспорт</label>
+                <label class="quiz-option"><input type="radio" name="q1" value="gym"> Тренажёрный зал / функциональный</label>
+                <label class="quiz-option"><input type="radio" name="q1" value="daily"> Повседневная активность + шаги</label>
+            </div>
+            <div class="quiz-question">
+                <p><strong>2. Бюджет?</strong></p>
+                <label class="quiz-option"><input type="radio" name="q2" value="low"> До 5 000 ₽</label>
+                <label class="quiz-option"><input type="radio" name="q2" value="mid"> 5 000 – 25 000 ₽</label>
+                <label class="quiz-option"><input type="radio" name="q2" value="high"> Больше 25 000 ₽</label>
+            </div>
+            <div class="quiz-question">
+                <p><strong>3. Что важнее всего?</strong></p>
+                <label class="quiz-option"><input type="radio" name="q3" value="hr"> Точный пульс и кардио</label>
+                <label class="quiz-option"><input type="radio" name="q3" value="gps"> GPS и трекинг маршрутов</label>
+                <label class="quiz-option"><input type="radio" name="q3" value="smart"> Умные функции / дизайн</label>
+            </div>
+            <button class="btn" id="submitQuiz">Узнать результат</button>
+            <div id="quizResult" style="margin-top: 1rem;"></div>
+        </div>
+    </div>
+
+    <!-- Советы и лайфхаки -->
+    <div class="section" id="tips">
+        <h2>💡 Советы и лайфхаки</h2>
+        <ul>
+            <li>📱 5 способов использовать смартфон на тренировке: камера для анализа техники, метроном для темпа, музыка для ритма, заметки для дневника, GPS для маршрута.</li>
+            <li>🎯 Мотивация через приложения: ставьте ежедневные челленджи в Strava, соревнуйтесь с друзьями.</li>
+            <li>🔒 Безопасность: не делитесь публично точками старта тренировок дома, отключайте GPS после финиша.</li>
+        </ul>
+    </div>
+
+    <!-- Контакты и обратная связь -->
+    <div class="section" id="contact">
+        <h2>📬 Контакты и обратная связь</h2>
+        <form class="contact-form" id="feedbackForm">
+            <input type="text" placeholder="Ваше имя" required>
+            <input type="email" placeholder="Email" required>
+            <textarea rows="4" placeholder="Ваш вопрос или предложение..."></textarea>
+            <button type="submit" class="btn">Отправить</button>
+        </form>
+        <p>📧 Email: sporttech@project.ru</p>
+        <p>📱 Соцсети: @sporttech_project (Telegram, VK)</p>
+    </div>
+</main>
+
+<footer>
+    <p>Бараник Захар, 9В класс | Проект «Технологии в спорте: влияние, вызовы и перспективы»</p>
+    <p>2026 | Все материалы учебные</p>
+</footer>
+
+<script>
+    // Простой тест
+    document.getElementById('submitQuiz').addEventListener('click', function() {
+        const q1 = document.querySelector('input[name="q1"]:checked');
+        const q2 = document.querySelector('input[name="q2"]:checked');
+        const q3 = document.querySelector('input[name="q3"]:checked');
+        if (!q1 || !q2 || !q3) {
+            document.getElementById('quizResult').innerHTML = '⚠️ Ответьте на все вопросы';
+            return;
+        }
+        let result = '';
+        if (q1.value === 'run' && q2.value === 'high') result = '🏃 Garmin Forerunner 965 – лучший GPS и кардио для бега';
+        else if (q1.value === 'run' && q2.value === 'mid') result = '🏃 Polar Pacer – отличный пульсометр с GPS';
+        else if (q1.value === 'gym') result = '💪 Нагрудный пульсометр Polar H10 + смартфон';
+        else if (q1.value === 'daily' && q2.value === 'low') result = '⌚ Xiaomi Mi Band 8 – идеален для шагов и бюджета';
+        else if (q1.value === 'daily' && q2.value !== 'low') result = '⌚ Apple Watch SE / Garmin Venu – стиль и спорт';
+        else if (q1.value === 'run' && q2.value === 'low') result = '⌚ Бюджетный фитнес-браслет + бесплатное приложение Strava';
+        else result = '🏅 Подойдут умные часы среднего сегмента: Huawei Watch GT или Amazfit';
+        document.getElementById('quizResult').innerHTML = `✅ ${result}`;
+    });
+
+    // Форма
+    document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Спасибо! Ваше сообщение отправлено (учебная демонстрация).');
+        this.reset();
+    });
+</script>
+</body>
+</html>
